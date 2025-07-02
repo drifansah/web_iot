@@ -1,135 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
-
-*,
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: url('assets/cursor.png'), auto;
-    font-family: 'Titillium Web', sans-serif;
+/* Layout dasar */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 .layouts {
-    max-width: 476px;
-    border: 1px solid black;
-    margin: 0 auto;
-    height: 100vh;
-    /* jika di class parentsnya dikasih relative maka class yg positionnya absolute akan masuk ke relative */
-    position: relative;
+  padding-bottom: 70px;
 }
 
 .navbar {
-    background-color: #579fff;
-    padding: 16px;
-    text-align: center;
-}
-
-.navbar h3 {
-    font-weight: 900;
-    color: white;
-}
-
-.items {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 100px);
-    overflow-y: scroll;
-    padding: 32px;
-    gap: 16px;
-}
-
-.item {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px;
-    background-color: white;
-    box-shadow: 0px 0px 4px 1px #999;
-}
-
-.item-image {
-    width: 50%;
-}
-
-.item-submit,
-.water-submit {
-    background-color: #579fff;
-    padding: 4px 8px;
-    width: 100%;
-    color: white;
-    font-weight: bolder;
-    font-size: 18px;
-    border: none;
-
+  background-color: #579fff;
+  color: white;
+  padding: 15px;
+  text-align: center;
 }
 
 .page-title {
-    padding: 16px;
-}
-
-.page-title h3 {
-    text-align: center;
-    font-weight: 800;
-    font-size: xx-large;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .waters {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
 }
 
 .water {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    background-color: white;
-    box-shadow: 0px 0px 4px 1px #999;
-}
-
-.water-location-text {
-    font-weight: 700;
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  width: 180px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .water-image {
-    width: 100px;
-    object-fit: cover;
+  width: 100px;
+  height: auto;
+}
+
+.water-location-text {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.water-submit {
+  margin: 5px 3px;
+  padding: 8px 15px;
+  background-color: #579fff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.water-submit:hover {
+  background-color: #347ad8;
 }
 
 .bottombar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #579fff;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 999;
 }
 
 .bottombar ul {
-    display: flex;
-    width: 100%;
-    list-style: none;
-    padding: 8px;
-
-}
-
-.bottombar ul li {
-    flex: 1;
-    text-align: center;
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
 }
 
 .bottombar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: x-large;
-    display: block;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
 }
 
-.bottombar ul li a:hover {
-    scale: 110%;
-    transition: all 0.3% ease-in-out;
+/* Responsive layout */
+@media screen and (max-width: 600px) {
+  .waters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .water {
+    width: 90%;
+  }
+
+  .bottombar ul {
+    gap: 20px;
+  }
+
+  .water-image {
+    width: 60%;
+  }
+
+  .water-submit {
+    width: 80px;
+    font-size: 14px;
+  }
 }
