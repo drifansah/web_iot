@@ -1,4 +1,3 @@
-
 const endpoint = "https://backendwebiot-production.up.railway.app";
 
 function setTaman(taman, status) {
