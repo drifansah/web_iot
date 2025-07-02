@@ -2,59 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lmapu-otomatis</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Smart Garden</title>
+  <link rel="stylesheet" href="/frontend/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" />
 </head>
 
 <body>
-    <div class="layouts">
-        <section class="navbar">
-            <h3>Kelompok 2</h3>
-        </section>
-        <section class="page-title">
-            <h3>WATERING CONTROL</h3>
-        </section>
-        <section class="waters">
-            <div class="water">
-                <img src="assets/watering-off.png " class="water-image" id="waterTamanImage1">
-                <p class="water-location-text">TAMAN1</p>
-                <button class="water-submit" id="watertaman1" onclick="setTaman1()">TURN ON</button>
-            </div>
-            <div class="water">
-                <img src="assets/watering-off.png " class="water-image" id="waterTamanImage2">
-                <p class="water-location-text">TAMAN2</p>
+  <div class="layouts">
+    <section class="navbar">
+      <h3>Smart Garden - Home</h3>
+    </section>
 
-                <button class="water-submit" id="waterTaman2" onclick="setTaman2()">TURN ON</button>
-            </div>
-            <div class="water">
-                <img src="assets/watering-off.png " class="water-image" id="waterTamanImage3">
-                <p class="water-location-text">TAMAN3</p>
+    <section class="page-title">
+      <h3>Selamat Datang di Sistem Smart Garden</h3>
+      <p>Silakan klik tombol shower untuk mengakses kontrol penyiraman.</p>
+    </section>
 
-                <button class="water-submit" id="waterTaman3" onclick="setTaman3()">TURN ON</button>
-            </div>
-            <div class="water">
-                <img src="assets/watering-off.png " class="water-image" id="waterTamanImage4">
-                <p class="water-location-text">TAMAN4</p>
-
-                <button class="water-submit" id="waterTaman4" onclick="setTaman4()">TURN ON</button>
-            </div>
-
-        </section>
-        <section class="bottombar">
-            <ul>
-                <li><a href="/"><i class="fa-solid fa-home"></i></a></li>
-                <li><a href="/watering.html"><i class="fa-solid fa-shower"></i></a></li>
-                <!-- <li><a href="#"><i class="fa-solid fa-fan"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-user"></i></a></li> -->
-            </ul>
-        </section>
-    </div>
-    <script src="main.js"></script>
+    <section class="bottombar">
+      <ul>
+        <li><a href="/frontend/watering.html"><i class="fa-solid fa-home"></i></a></li>
+        <li><a href="/frontend/index.html"><i class="fa-solid fa-shower"></i></a></li>
+      </ul>
+    </section>
+  </div>
 </body>
 
 </html>
