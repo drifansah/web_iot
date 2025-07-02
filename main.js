@@ -23,4 +23,5 @@ function getTamanStatus(taman) {
     });
 }
 
+
 ['taman1', 'taman2', 'taman3', 'taman4'].forEach(getTamanStatus);
