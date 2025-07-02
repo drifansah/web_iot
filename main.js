@@ -7,15 +7,15 @@ const previousStatus = {
   taman4: null
 };
 
+// ✅ FRONTEND hanya kirim perintah ke endpoint /command
 function setTaman(taman, status) {
-  fetch(`${endpoint}/api/${taman}`, {
+  fetch(`${endpoint}/api/${taman}/command`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ status })
+    body: JSON.stringify({ command: status })
   });
-  // ❌ Jangan panggil getTamanStatus di sini
 }
 
 function getTamanStatus(taman) {
@@ -28,12 +28,10 @@ function getTamanStatus(taman) {
 
       img.src = (statusText === "ON") ? "assets/watering-on.png" : "assets/watering-off.png";
 
-      // ✅ Tampilkan notifikasi hanya jika status berubah
       if (previousStatus[taman] !== null && previousStatus[taman] !== statusText) {
         showStatusMessage(taman, `Relay ${statusText === "ON" ? "MENYALA" : "MATI"}`);
       }
 
-      // Simpan status saat ini
       previousStatus[taman] = statusText;
     });
 }
@@ -48,4 +46,4 @@ function showStatusMessage(taman, message) {
 
 setInterval(() => {
   ['taman1', 'taman2', 'taman3', 'taman4'].forEach(getTamanStatus);
-}, 1000); // polling tiap 1 detik
+}, 1000);
