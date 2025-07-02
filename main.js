@@ -45,4 +45,4 @@ function showStatusMessage(taman, message) {
 
 setInterval(() => {
   ['taman1', 'taman2', 'taman3', 'taman4'].forEach(getTamanStatus);
-}, 1000);
+}, 600);
