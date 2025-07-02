@@ -15,6 +15,7 @@ function setTaman(taman, status) {
     },
     body: JSON.stringify({ status })
   });
+  // ❌ Jangan panggil getTamanStatus di sini
 }
 
 function getTamanStatus(taman) {
@@ -27,9 +28,12 @@ function getTamanStatus(taman) {
 
       img.src = (statusText === "ON") ? "assets/watering-on.png" : "assets/watering-off.png";
 
-      // Tampilkan status saat ini (selalu)
-      showStatusMessage(taman, `Relay ${statusText === "ON" ? "MENYALA" : "MATI"}`);
+      // ✅ Tampilkan notifikasi hanya jika status berubah
+      if (previousStatus[taman] !== null && previousStatus[taman] !== statusText) {
+        showStatusMessage(taman, `Relay ${statusText === "ON" ? "MENYALA" : "MATI"}`);
+      }
 
+      // Simpan status saat ini
       previousStatus[taman] = statusText;
     });
 }
@@ -44,4 +48,4 @@ function showStatusMessage(taman, message) {
 
 setInterval(() => {
   ['taman1', 'taman2', 'taman3', 'taman4'].forEach(getTamanStatus);
-}, 1000);
+}, 1000); // polling tiap 1 detik
