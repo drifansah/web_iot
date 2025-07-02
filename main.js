@@ -17,9 +17,9 @@ function getTamanStatus(taman) {
     .then(data => {
       const img = document.getElementById(`waterTamanImage${taman.replace('taman', '')}`);
       if (data.status === "ON") {
-        img.src = "/assets/watering-on.png";
+        img.src = "assets/watering-on.png";
       } else {
-        img.src = "/assets/watering-off.png";
+        img.src = "assets/watering-off.png";
       }
     });
 }
