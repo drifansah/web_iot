@@ -7,7 +7,6 @@ const previousStatus = {
   taman4: null
 };
 
-// ✅ FRONTEND hanya kirim perintah ke endpoint /command
 function setTaman(taman, status) {
   fetch(`${endpoint}/api/${taman}/command`, {
     method: "POST",
