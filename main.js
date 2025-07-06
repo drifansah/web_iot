@@ -25,14 +25,40 @@ function getTamanStatus(taman) {
       const id = taman.replace("taman", "");
       const img = document.getElementById(`waterTamanImage${id}`);
 
-      img.src = (statusText === "ON") ? "assets/watering-on.png" : "assets/watering-off.png";
-
-      if (previousStatus[taman] !== null && previousStatus[taman] !== statusText) {
-        showStatusMessage(taman, `Relay ${statusText === "ON" ? "MENYALA" : "MATI"}`);
+      // img.src = (statusText === "ON") ? "assets/watering-on.png" : "assets/watering-off.png";
+      if (statusText === "ON") {
+        img.src = `assets/watering-on.png`;
+      } else if (statusText === "OFF") {
+        img.src = `assets/watering-off.png`;
+      } else if (statusText === "SLEEP") {
+        img.src = `assets/watering-off.png`;
       }
 
+
+
+      // if (previousStatus[taman] !== null && previousStatus[taman] !== statusText) {
+      //   showStatusMessage(taman, `Relay ${statusText === "ON" ? "MENYALA" : "MATI"}`);
+      // }
+      let message = "";
+
+      if (statusText === "ON") {
+        message = "Relay MENYALA";
+      } else if (statusText === "OFF") {
+        message = "Relay MATI";
+      } else if (statusText === "SLEEP") {
+        message = "Sedang SLEEP";
+      }
+
+      if (message && previousStatus[taman] !== statusText) {
+        showStatusMessage(taman, message);
+      }
+
+
       previousStatus[taman] = statusText;
-    });
+    })
+    .catch(err => {
+      console.error(`Gagal mengambil status ${taman}:`, err);
+    })
 }
 
 function showStatusMessage(taman, message) {
@@ -45,4 +71,4 @@ function showStatusMessage(taman, message) {
 
 setInterval(() => {
   ['taman1', 'taman2', 'taman3', 'taman4'].forEach(getTamanStatus);
-}, 600);
+}, 1000);
