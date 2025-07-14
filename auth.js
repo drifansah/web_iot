@@ -7,7 +7,7 @@ if (!token) {
   window.location.href = "login.html";
 } else {
   // Validasi token ke backend
-  fetch("http://localhost:3000/api/validate-token", {
+  fetch("https://backendwebiot-production.up.railway.app/api/validate-token", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token })
