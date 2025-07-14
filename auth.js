@@ -13,6 +13,8 @@ if (!token) {
       if (data.valid) {
         // ✅ Token valid → tampilkan isi halaman
         document.getElementById("app").style.display = "block";
+        const loading = document.getElementById("loading");
+        if (loading) loading.style.display = "none";
       } else {
         localStorage.removeItem("token");
         window.location.href = "login.html";
