@@ -17,7 +17,7 @@ function login() {
         // ✅ Delay 100ms sebelum redirect agar token tersimpan dulu
         setTimeout(() => {
           window.location.href = "index.html";
-        }, 100);
+        }, 50);
       } else {
         document.getElementById("login-error").innerText = "Login gagal. Coba lagi.";
       }
