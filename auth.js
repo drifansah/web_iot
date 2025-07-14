@@ -1,12 +1,8 @@
-// auth.js
-
-// Cek apakah token ada
 const token = localStorage.getItem("token");
 
 if (!token) {
   window.location.href = "login.html";
 } else {
-  // Validasi token ke backend
   fetch("https://backendwebiot-production.up.railway.app/api/validate-token", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -14,7 +10,10 @@ if (!token) {
   })
     .then(res => res.json())
     .then(data => {
-      if (!data.valid) {
+      if (data.valid) {
+        // ✅ Token valid → tampilkan isi halaman
+        document.getElementById("app").style.display = "block";
+      } else {
         localStorage.removeItem("token");
         window.location.href = "login.html";
       }
@@ -25,7 +24,7 @@ if (!token) {
     });
 }
 
-// Fungsi logout global
+// Fungsi logout
 function logout() {
   localStorage.removeItem("token");
   window.location.href = "login.html";
