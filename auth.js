@@ -14,9 +14,7 @@ if (!token) {
   })
     .then(res => res.json())
     .then(data => {
-      if (data.valid) {
-        document.getElementById("app").style.display = "block";
-      }else{
+      if (!data.valid) {
         localStorage.removeItem("token");
         window.location.href = "login.html";
       }
