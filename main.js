@@ -1,5 +1,5 @@
-// const endpoint = "https://backendwebiot-production.up.railway.app";
-const endpoint = "http://localhost:3000"; 
+const endpoint = "https://backendwebiot-production.up.railway.app";
+// const endpoint = "http://localhost:3000"; 
 
 const previousStatus = {
   taman1: null,
