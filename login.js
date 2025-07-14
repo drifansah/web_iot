@@ -1,5 +1,5 @@
-// const endpoint = "http://localhost:3000"; // ganti ke backend deploy jika sudah online
 const endpoint = "https://backendwebiot-production.up.railway.app";
+
 function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -13,30 +13,40 @@ function login() {
     .then(data => {
       if (data.success && data.token) {
         localStorage.setItem("token", data.token);
-        window.location.href = "index.html";
-      } else {
-        document.getElementById("login-error").innerText = "Login gagal";
-      }
-    });
-}
 
-// Jika token masih tersimpan, redirect langsung ke index
-const token = localStorage.getItem("token");
-if (token) {
-  fetch(`${endpoint}/api/validate-token`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.valid) {
-        window.location.href = "index.html";
+        // ✅ Delay 100ms sebelum redirect agar token tersimpan dulu
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 100);
       } else {
-        localStorage.removeItem("token");
+        document.getElementById("login-error").innerText = "Login gagal. Coba lagi.";
       }
     })
     .catch(() => {
-      localStorage.removeItem("token");
+      document.getElementById("login-error").innerText = "Terjadi kesalahan jaringan.";
     });
 }
+
+// ✅ Cek token valid untuk langsung redirect ke index (jika sudah login)
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    fetch(`${endpoint}/api/validate-token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.valid) {
+          window.location.href = "index.html";
+        } else {
+          localStorage.removeItem("token");
+        }
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+      });
+  }
+});
