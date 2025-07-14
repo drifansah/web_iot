@@ -1,5 +1,5 @@
-const endpoint = "http://localhost:3000"; // ganti ke backend deploy jika sudah online
-
+// const endpoint = "http://localhost:3000"; // ganti ke backend deploy jika sudah online
+const endpoint = "https://backendwebiot-production.up.railway.app";
 function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
