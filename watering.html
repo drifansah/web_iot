@@ -11,22 +11,39 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    #app {
-      display: none;
-    }
-     #loading {
+  #app {
+    display: none;
+  }
+
+  #loading {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: sans-serif;
-    color: #555;
+    background: white;
   }
-  </style>
+
+  .spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
 </head>
 
 <body>
-  <div id="loading">Loading...</div>
+  <div id="loading">
+  <div class="spinner"></div>
+</div>
   <div id="app">
     <div class="layouts">
       <section class="navbar">
