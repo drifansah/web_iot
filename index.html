@@ -2,72 +2,74 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Watering Control</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .bottombar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border-top: 1px solid #ccc;
+      padding: 10px 0;
+      z-index: 10;
+    }
+
+    .logout-wrapper {
+      position: fixed;
+      bottom: 70px;
+      /* ⬅️ Tambahkan jarak dari bawah */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 9;
+    }
+  </style>
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-  #app {
-    display: none;
-  }
-
-  #loading {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-  }
-
-  .spinner {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
-
 </head>
 
 <body>
-  <div id="loading">
-  <div class="spinner"></div>
-</div>
-  <div id="app"> <!-- ✅ seluruh konten dibungkus di sini -->
-    <div class="layouts">
-      <section class="navbar">
-        <h3>Smart Garden - Home</h3>
-      </section>
+  <div class="layouts">
+    <section class="navbar">
+      <h3>Smart Garden - Home</h3>
+    </section>
 
-      <section class="page-title">
-        <h3>Selamat Datang di Sistem Smart Garden</h3>
-        <p>Silakan klik tombol shower untuk mengakses kontrol penyiraman.</p>
-      </section>
-
-      <div class="logout-wrapper">
-        <button onclick="logout()" style="padding: 10px 20px; font-size: 16px;">Logout</button>
-      </div>
-
-      <section class="bottombar">
-        <ul>
-          <li><a href="index.html"><i class="fa-solid fa-home"></i></a></li>
-          <li><a href="watering.html"><i class="fa-solid fa-shower"></i></a></li>
-        </ul>
-      </section>
+    <section class="page-title">
+      <h3>Selamat Datang di Sistem Smart Garden</h3>
+      <p>Silakan klik tombol shower untuk mengakses kontrol penyiraman.</p>
+    </section>
+    <div class="logout-wrapper">
+      <button onclick="logout()" style="margin-top: 10px;">Logout</button>
     </div>
-  </div>
+    <section class="bottombar">
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-home"></i></a></li>
+        <li><a href="watering.html"><i class="fa-solid fa-shower"></i></a></li>
+      </ul>
+    </section>
 
-  <script src="auth.js"></script> <!-- ✅ Auth dijalankan setelah #app ada -->
+  </div>
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "login.html";
+    }
+
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+
+
 </body>
 
 </html>
