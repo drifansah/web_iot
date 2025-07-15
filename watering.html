@@ -2,103 +2,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Watering Control</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <style>
-  #app {
-    display: none;
-  }
-
-  #loading {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-  }
-
-  .spinner {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
-
 </head>
 
 <body>
-  <div id="loading">
-  <div class="spinner"></div>
-</div>
-  <div id="app">
-    <div class="layouts">
-      <section class="navbar">
-        <h3>Kelompok 2</h3>
-      </section>
-      <section class="page-title">
-        <h3>WATERING CONTROL</h3>
-      </section>
+  <div class="layouts">
+    <section class="navbar">
+      <h3>Kelompok 2</h3>
+    </section>
+    <section class="page-title">
+      <h3>WATERING CONTROL</h3>
+    </section>
 
-      <section class="waters">
-        <div class="water">
-          <img src="assets/watering-off.png" class="water-image" id="waterTamanImage1">
-          <p class="water-location-text">TAMAN1</p>
-          <div class="taman-status" id="notifTaman1"></div>
-          <button class="water-submit" onclick="setTaman('taman1', 'ON')">TURN ON</button>
-          <button class="water-submit" onclick="setTaman('taman1', 'OFF')">TURN OFF</button>
-          <button class="water-submit" onclick="setTaman('taman1', 'SLEEP')">MODE SLEEP</button>
-        </div>
+    <section class="waters">
+      <div class="water">
+        <img src="assets/watering-off.png" class="water-image" id="waterTamanImage1">
+        <p class="water-location-text">TAMAN1</p>
+        <div class="taman-status" id="notifTaman1"></div>
+        <button class="water-submit" onclick="setTaman('taman1', 'ON')">TURN ON</button>
+        <button class="water-submit" onclick="setTaman('taman1', 'OFF')">TURN OFF</button>
+        <button class="water-submit" onclick="setTaman('taman1', 'SLEEP')">MODE SLEEP</button>
 
-        <div class="water">
-          <img src="assets/watering-off.png" class="water-image" id="waterTamanImage2">
-          <p class="water-location-text">TAMAN2</p>
-          <div class="taman-status" id="notifTaman2"></div>
-          <button class="water-submit" onclick="setTaman('taman2', 'ON')">TURN ON</button>
-          <button class="water-submit" onclick="setTaman('taman2', 'OFF')">TURN OFF</button>
-        </div>
+      </div>
 
-        <div class="water">
-          <img src="assets/watering-off.png" class="water-image" id="waterTamanImage3">
-          <p class="water-location-text">TAMAN3</p>
-          <div class="taman-status" id="notifTaman3"></div>
-          <button class="water-submit" onclick="setTaman('taman3', 'ON')">TURN ON</button>
-          <button class="water-submit" onclick="setTaman('taman3', 'OFF')">TURN OFF</button>
-        </div>
+      <div class="water">
+        <img src="assets/watering-off.png" class="water-image" id="waterTamanImage2">
+        <p class="water-location-text">TAMAN2</p>
+        <button class="water-submit" onclick="setTaman('taman2', 'ON')">TURN ON</button>
+        <button class="water-submit" onclick="setTaman('taman2', 'OFF')">TURN OFF</button>
+      </div>
 
-        <div class="water">
-          <img src="assets/watering-off.png" class="water-image" id="waterTamanImage4">
-          <p class="water-location-text">TAMAN4</p>
-          <div class="taman-status" id="notifTaman4"></div>
-          <button class="water-submit" onclick="setTaman('taman4', 'ON')">TURN ON</button>
-          <button class="water-submit" onclick="setTaman('taman4', 'OFF')">TURN OFF</button>
-        </div>
-      </section>
+      <div class="water">
+        <img src="assets/watering-off.png" class="water-image" id="waterTamanImage3">
+        <p class="water-location-text">TAMAN3</p>
+        <button class="water-submit" onclick="setTaman('taman3', 'ON')">TURN ON</button>
+        <button class="water-submit" onclick="setTaman('taman3', 'OFF')">TURN OFF</button>
+      </div>
 
-      <section class="bottombar">
-        <ul>
-          <li><a href="index.html"><i class="fa-solid fa-home"></i></a></li>
-          <li><a href="watering.html"><i class="fa-solid fa-shower"></i></a></li>
-        </ul>
-      </section>
-    </div>
+      <div class="water">
+        <img src="assets/watering-off.png" class="water-image" id="waterTamanImage4">
+        <p class="water-location-text">TAMAN4</p>
+        <button class="water-submit" onclick="setTaman('taman4', 'ON')">TURN ON</button>
+        <button class="water-submit" onclick="setTaman('taman4', 'OFF')">TURN OFF</button>
+      </div>
+    </section>
+
+    <section class="bottombar">
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-home"></i></a></li>
+        <li><a href="watering.html"><i class="fa-solid fa-shower"></i></a></li>
+      </ul>
+    </section>
+
   </div>
 
-  <!-- ✅ auth.js harus dipanggil lebih dulu -->
-  <script src="auth.js"></script>
   <script src="main.js"></script>
 </body>
 
