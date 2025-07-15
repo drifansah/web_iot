@@ -1,3 +1,4 @@
+
 /* Layout dasar */
 body {
   font-family: Arial, sans-serif;
@@ -38,7 +39,6 @@ body {
   width: 180px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
 .taman-status {
   font-size: 14px;
   color: #2d6cdf;
@@ -122,14 +122,4 @@ body {
     width: 80px;
     font-size: 14px;
   }
-}
-
-
-.logout-wrapper {
-  position: fixed;
-  bottom: 70px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 9;
 }
